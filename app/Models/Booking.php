@@ -21,5 +21,6 @@ class Booking extends Model
         'payment_gate',
         'booking_status',
     ];  
+
     
 }

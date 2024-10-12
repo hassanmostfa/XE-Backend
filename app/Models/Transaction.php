@@ -17,4 +17,5 @@ class Transaction extends Model
         'payment_method',
         'transaction_id',
     ];
+
 }
