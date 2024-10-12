@@ -16,6 +16,7 @@ class Service extends Model
         'title',
         'description',
         'price',
+        'image'
     ];
 
     public function country()

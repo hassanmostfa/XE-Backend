@@ -36,6 +36,4 @@ class Booking extends Model
     {
         return $this->hasMany(AuditLog::class);
     }
-
-    
 }

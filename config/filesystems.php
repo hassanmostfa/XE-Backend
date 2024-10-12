@@ -71,6 +71,7 @@ return [
 
     'links' => [
         public_path('countries_images') => storage_path('app/countries_images'),
+        public_path('services_images') => storage_path('app/services_images'),
     ],
 
 ];

@@ -38,6 +38,7 @@ class ServicesController extends Controller
             'title' => 'required',
             'description' => 'required',
             'price' => 'required',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         
         if ($validator->fails()) {
@@ -49,7 +50,8 @@ class ServicesController extends Controller
             'country_id' => $request->country_id,
             'title' => $request->title,
             'description' => $request->description,
-            'price' => $request->price
+            'price' => $request->price,
+            'image' => $request->file('image')->store('services_images'),
         ]);
         return response()->json([
             'message' => 'Service created successfully',
@@ -81,6 +83,7 @@ class ServicesController extends Controller
             'title' => 'required',
             'description' => 'required',
             'price' => 'required',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if ($validator->fails()) {
             return response(['errors'=>$validator->errors()->all()], 422);
@@ -91,7 +94,8 @@ class ServicesController extends Controller
                 'country_id' => $request->country_id,
                 'title' => $request->title,
                 'description' => $request->description,
-                'price' => $request->price
+                'price' => $request->price,
+                'image' => $request->file('image')->store('services_images'),
             ]);
             return response()->json([
                 'message' => 'Service updated successfully',
