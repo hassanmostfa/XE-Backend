@@ -18,4 +18,9 @@ class Transaction extends Model
         'transaction_id',
     ];
 
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
+    }
+
 }

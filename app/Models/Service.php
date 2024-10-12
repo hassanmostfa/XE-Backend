@@ -23,9 +23,14 @@ class Service extends Model
         return $this->belongsTo(Country::class);
     }
 
-    public function service()
+    public function features()
     {
         return $this->hasMany(ServiceFeature::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 
 }

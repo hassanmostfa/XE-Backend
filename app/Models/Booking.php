@@ -20,7 +20,22 @@ class Booking extends Model
         'payment_status',
         'payment_gate',
         'booking_status',
-    ];  
+    ];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function auditLogs()
+    {
+        return $this->hasMany(AuditLog::class);
+    }
 
     
 }

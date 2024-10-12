@@ -15,4 +15,9 @@ class AuditLog extends Model
         'action',
         'user_ip',
     ];
+
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
+    }
 }

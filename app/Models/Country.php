@@ -17,4 +17,9 @@ class Country extends Model
         'image',
     ];
 
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
 }

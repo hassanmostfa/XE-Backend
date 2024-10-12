@@ -21,5 +21,4 @@ class ServiceFeature extends Model
     {
         return $this->belongsTo(Service::class);
     }
-
 }
