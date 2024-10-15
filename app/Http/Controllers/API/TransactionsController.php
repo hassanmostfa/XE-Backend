@@ -8,13 +8,17 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Transaction;
 class TransactionsController extends Controller
 {
-    // Get all Transactions
+    // Get all Transactions with client_name and service_name
     public function index() {
-        $transactions = Transaction::all();
+        // Eager load 'booking' and its related 'service'
+        $transactions = Transaction::with(['booking:id,client_name,service_id', 'booking.service:id,title'])->get();
+
         return response()->json([
             'transactions' => $transactions
         ], 200);
     }
+
+
 
     // Create a new Transaction
     public function store(Request $request) {

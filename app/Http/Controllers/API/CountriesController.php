@@ -66,6 +66,8 @@ class CountriesController extends Controller
         if ($validator->fails()) {
             return response(['errors' => $validator->errors()->all()], 422);
         }
+
+
     
         try {
             // Find the country by ID

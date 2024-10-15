@@ -9,14 +9,13 @@ use Illuminate\Support\Facades\Validator;
 
 class BookingsController extends Controller
 {
-    // Get all Bookings
+    // Get all Bookings with Service name
     public function index() {
-        $bookings = Booking::all();
+        $bookings = Booking::with('service:title,id')->get(); // Eager loading service name
         return response()->json([
             'bookings' => $bookings
         ], 200);
     }
-
 
     // Create a new Booking
     public function store(Request $request) {

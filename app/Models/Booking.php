@@ -24,12 +24,12 @@ class Booking extends Model
 
     public function service()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Service::class , 'service_id');
     }
 
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class , 'booking_id');
     }
 
     public function auditLogs()

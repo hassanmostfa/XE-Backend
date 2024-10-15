@@ -18,7 +18,7 @@ class ServicesController extends Controller
     public function index()
     {
         try {
-             // Get all services
+        // Get all services
         $services = Service::all();
 
         return response()->json($services);
