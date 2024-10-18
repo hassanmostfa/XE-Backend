@@ -10,7 +10,9 @@ class TransactionsController extends Controller
 {
     // Get all Transactions
     public function index() {
-        $transactions = Transaction::all();
+        $transactions = Transaction::with(['booking' => function($query) {
+            $query->with('service');
+        }])->get();
         return response()->json([
             'transactions' => $transactions
         ], 200);

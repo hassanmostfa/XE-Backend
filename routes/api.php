@@ -41,7 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
         // Show CountryDetails
         Route::get('/user/show-country/{id}', 'showCountryDetails');
         // Update Country
-        Route::put('/user/update-country/{id}', 'updateCountry');
+        Route::post('/user/update-country/{id}', 'updateCountry');
         // Delete Country
         Route::delete('/user/delete-country/{id}', 'deleteCountry');
     });
@@ -55,7 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
         // Show Service Details
         Route::get('/user/show-service/{id}', 'show');
         // Update Service
-        Route::put('/user/update-service/{id}', 'update');
+        Route::post('/user/update-service/{id}', 'update');
         // Delete Service
         Route::delete('/user/delete-service/{id}', 'destroy');
     });

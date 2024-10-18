@@ -11,7 +11,7 @@ class BookingsController extends Controller
 {
     // Get all Bookings
     public function index() {
-        $bookings = Booking::all();
+        $bookings = Booking::with('service')->get();
         return response()->json([
             'bookings' => $bookings
         ], 200);
