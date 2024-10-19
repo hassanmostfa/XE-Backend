@@ -57,10 +57,9 @@ class CountriesController extends Controller
     // Update Country
     public function updateCountry(Request $request, $id)
     {
-
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'image' => 'file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $validator = Validator::make($request->all() + $request->only('name'), [
+            'name' => 'required|string',
+            'image' => 'sometimes|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
         if ($validator->fails()) {
@@ -70,19 +69,16 @@ class CountriesController extends Controller
 
     
         try {
-            // Find the country by ID
             $country = Country::findOrFail($id);
     
             // Update the name
-            $country->name = $request->name;
+            $country->name = $request->input('name');
     
-            // Check if an image is uploaded
+            // Handle the image if uploaded
             if ($request->hasFile('image')) {
-                // Store the new image and update the 'image' field
                 $country->image = $request->file('image')->store('countries_images');
             }
     
-            // Save the updated country details
             $country->save();
     
             return response()->json($country, 200);

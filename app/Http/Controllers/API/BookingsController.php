@@ -11,7 +11,7 @@ class BookingsController extends Controller
 {
     // Get all Bookings with Service name
     public function index() {
-        $bookings = Booking::with('service:title,id')->get(); // Eager loading service name
+        $bookings = Booking::all();
         return response()->json([
             'bookings' => $bookings
         ], 200);

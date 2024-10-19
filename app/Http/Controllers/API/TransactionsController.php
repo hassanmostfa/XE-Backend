@@ -10,9 +10,7 @@ class TransactionsController extends Controller
 {
     // Get all Transactions with client_name and service_name
     public function index() {
-        // Eager load 'booking' and its related 'service'
-        $transactions = Transaction::with(['booking:id,client_name,service_id', 'booking.service:id,title'])->get();
-
+        $transactions = Transaction::all();
         return response()->json([
             'transactions' => $transactions
         ], 200);
