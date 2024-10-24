@@ -10,6 +10,7 @@ use App\Http\Controllers\API\BookingsController;
 use App\Http\Controllers\API\TransactionsController;
 use App\Http\Controllers\API\AuditLogController;
 use App\Http\Controllers\API\MessagesController;
+use App\Http\Controllers\API\FaqController;
 
 
 /*
@@ -130,6 +131,20 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/user/update-message/{id}', 'update');
         // Delete Message
         Route::delete('/user/delete-message/{id}', 'destroy');
+    });
+
+    // FAQs APIS
+    Route::controller(FaqController::class)->group(function(){
+        // get all faqs
+        Route::get('/faqs', 'index');
+        // Add New Faq
+        Route::post('/add-faq', 'store');
+        // Show Faq Details 
+        Route::get('/show-faq/{id}', 'show');
+        // Update Faq
+        Route::put('/update-faq/{id}', 'update');
+        // Delete Faq
+        Route::delete('/delete-faq/{id}', 'destroy');
     });
 
 });
